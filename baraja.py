@@ -1,4 +1,7 @@
 
+
+from random import randint
+
 class Mazo(object):
     def __init__(self):
         self.mazo = []
@@ -6,12 +9,25 @@ class Mazo(object):
         for e in cartas:
             self.mazo += e
 
+    def robar(self):
+        rango = randint(0,len(self.mazo)-1)
+        print("tomaste la carta{}".format(self.mazo[rango]))
+        self.mazo.remove(self.mazo[rango])
+
+    def repartir(self):
+        for s in range(0,7):
+            rango = randint(0,len(self.mazo)-1)
+            print("{}".format(self.mazo[rango]))
+            self.mazo.remove(self.mazo[rango])
+
+
 
 class Cartas(object):
     def __init__(self):
         self.lista = []
         self.color = ""
     def generar(self):
+        self.__generarComodines()
         for a in range(10):
             if a!= 0:
                 self.lista.append([a,self.color])
@@ -20,6 +36,12 @@ class Cartas(object):
 
             else:
                 self.lista.append([a,self.color])
+
+    def __generarComodines(self):
+        comodines = ["Retroceso","Omitir","+ 2"]
+        for c in comodines:
+            self.lista.append([c,self.color])
+            self.lista.append([c,self.color])
 
 
 
@@ -50,7 +72,6 @@ class CartasAmarillas(Cartas):
         self.color = "Amarillo"
 
 
-
 rojas = CartasRojas()
 rojas.generar()
 
@@ -60,4 +81,11 @@ azules.generar()
 verdes = CartasVerdes()
 verdes.generar()
 
-print(azules.lista,rojas.lista,verdes.lista)
+amarillas = CartasAmarillas()
+amarillas.generar()
+
+barajas = Mazo()
+barajas.llenar_mazo([rojas.lista,verdes.lista,azules.lista,amarillas.lista])
+barajas.repartir()
+print(" ")
+print(barajas.mazo)
