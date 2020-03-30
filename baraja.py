@@ -115,4 +115,3 @@ listaCartas = generarListas(lista)
 
 barajas = Mazo()
 barajas.llenar_mazo(listaCartas)
-#print(len(barajas.mazo))
