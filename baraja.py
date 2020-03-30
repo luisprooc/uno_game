@@ -1,8 +1,7 @@
 
-from mesa import *
 from random import randint
 
-class Mazo(object):
+class Mazo():
     def __init__(self):
         self.mazo = []
         self.valorCartas = {"+ 2":20,"Retorno":20,"Intermision":20,"+ 4":50,"Elegir color":50}
@@ -25,7 +24,7 @@ class Mazo(object):
 
 
 
-class Cartas(object):
+class Cartas():
     def __init__(self):
         self.lista = []
         self.color = ""
@@ -46,7 +45,7 @@ class Cartas(object):
             self.lista.append([c,self.color])
             self.lista.append([c,self.color])
 
-class CartasComodines(object):
+class CartasComodines():
     def __init__(self):
         self.color = "Negro"
         self.lista = []

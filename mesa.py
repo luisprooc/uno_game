@@ -1,6 +1,5 @@
-from baraja import *
-from random import randint
-class Mesa(object):
+from baraja import  *
+class Mesa():
     def accion(self,jugadores,mazo):
         self.__repJugadores(jugadores)
         print(" ")
@@ -17,22 +16,20 @@ class Mesa(object):
     def inicial(self,barajas):
         rango = randint(0,len(barajas.mazo)-1)
         self.repCartas(barajas.mazo[rango])
-        barajas.mazo.remove[rango]
+        barajas.mazo.remove(barajas.mazo[rango])
 
 
 
 
 
 
-
-
-print(len(barajas.mazo))
 
 Juan = "Juan"
 Pedro = "Pedro"
 
 tablero = Mesa()
-tablero.accion([[Juan,20],[Pedro,30]],[barajas.mazo])
+tablero.accion([[Juan,0],[Pedro,0]],[barajas.mazo])
+tablero.inicial(barajas)
 
 
 
