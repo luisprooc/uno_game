@@ -65,6 +65,14 @@ class CartasComodines():
         
         return True
 
+    def intermision(self,jugadores):
+        b = 0
+        return jugadores[b+1]
+
+    def retorno(self,jugadores):
+        return jugadores.reverse()
+
+
 
 
 

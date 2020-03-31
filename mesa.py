@@ -1,7 +1,9 @@
 from baraja import  *
 from jugador import *
+import os
+import time
 class Mesa():
-    def accion(self,jugadores,mazo):
+    def accion(self,jugadores):
         print(" ")
         print(" ")
         self.__repJugadores(jugadores)
@@ -9,16 +11,35 @@ class Mesa():
 
     def __repJugadores(self,jugadores):
         for a in jugadores:
-            print("{} : {}".format(a.nombre,a.puntos))
+            print("{} : {}  {} ".format(a.nombre,a.puntos,a.estado))
 
-    def repCartas(self,barajas):
-        carta = barajas.mazo[0]
+    def repCartas(self,carta):
         print("En la mesa hay: \n{}".format(carta))
+        return carta
+
+    def validarCarta(self,jugada,carta):
+        if carta[0] == jugada[0]:
+            return True
+        
+        elif carta[1] == jugada[1]:
+            return True
+            
+
+        else:
+            return False
+
 
 
     def inicial(self,barajas):
         rango = randint(0,len(barajas.mazo)-1)
+        check = barajas.mazo[rango]
+        while check[0] in ["+ 2","Retorno","Intermision","+ 4","Elegir color"]:
+            rango = randint(0,len(barajas.mazo)-1)
+            check = barajas.mazo[rango]
+            
+
         print("En la mesa hay: \n{}".format(barajas.mazo[rango]))
+        return barajas.mazo[rango]
         barajas.mazo.remove(barajas.mazo[rango])
 
 
@@ -27,19 +48,10 @@ class Mesa():
 
 
 
-
+#jugadores[s] = especiales.intermision(jugadores)
 
 tablero = Mesa()
-tablero.accion(jugadores,[barajas.mazo])
+tablero.accion(jugadores)
 barajas.repartir(jugadores)
-tablero.inicial(barajas)
-while True:
-    for s in jugadores:
-        print(" ")
-        print("{} tu mano es :".format(s.nombre))
-        print( "  ")
-        s.mostrarMano()
-        print(" ")
-        input("¿Que carta deseas jugar?: ")
-        print(" ")
-        tablero.repCartas(barajas)
+rondaIniciada = True
+jugada = None
