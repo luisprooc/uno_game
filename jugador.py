@@ -16,10 +16,13 @@ class Jugador():
             print("Uno")
             self.estado = "Uno"
 
+        else:
+            print("Solo puedes decir uno cuando jugaras la penultima carta")
+
     def mostrarOpciones(self):
         print("Presiona 'r' para robar una carta")
         print("Presiona 'q' para jugar carta")
-        print("Presiona 'w' para decir Uno")
+        print("Presiona 'w' para decir Uno y jugar la penultima carta")
 
     def jugarCarta(self,opcion):
         jugada = self.mano[opcion]
@@ -31,6 +34,11 @@ class Jugador():
             if e.puntos > 500:
                 return True,e.nombre
         return False
+
+    def sumarPuntos(self,jugadores,jugador):
+        for e in jugadores.mano:
+            jugador.puntos+=e[0]
+
 
 try:
     while True:

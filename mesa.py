@@ -18,10 +18,10 @@ class Mesa():
         return carta
 
     def validarCarta(self,jugada,carta):
-        if carta[0] == jugada[0]:
+        if carta[0] == jugada[0] or carta[1] == jugada[1]:
             return True
         
-        elif carta[1] == jugada[1]:
+        elif jugada[0] == "+ 4" or jugada[0] == "Elegir color":
             return True
             
 

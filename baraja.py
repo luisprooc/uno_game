@@ -1,5 +1,5 @@
 
-from random import randint
+from random import randint,choice
 
 class Mazo():
     def __init__(self):
@@ -57,7 +57,7 @@ class CartasComodines():
             else:
                 self.lista.append(["Elegir color",self.color])
 
-    def validar(self,tablero,jugador):
+    def toma4(self,tablero,jugador):
         cartaMesa = tablero.repCartas()
         for a in jugador.mano:
             if a[0] == cartaMesa[0] or a[1] == cartaMesa[1]:
@@ -71,6 +71,55 @@ class CartasComodines():
 
     def retorno(self,jugadores):
         return jugadores.reverse()
+
+    def cambiarColor(self,jugada,color):
+        jugada[1] = color
+        return jugada
+
+    def mostrarColores(self):
+        print(" ")
+        print("Presiona 1 para elegir color rojo")
+        print("Presiona 2 para elegir color azul")
+        print("Presiona 3 para elegir color verde")
+        print("Presiona 4 para elegir color amarillo")
+        print("Presiona cualquiera tecla para color aleatorio")
+        print(" ")
+
+    def opcionColor(self,color):
+        colorElegido = ""
+        if color == "1":
+            colorElegido = "Rojo"
+
+        elif color == "2":
+            colorElegido = "Azul"
+
+        elif color == "3":
+            colorElegido = "Verde"
+        
+        elif color == "4":
+            colorElegido = "Amarillo"
+
+        else:
+            aleatorio = randint(1,4)
+            if aleatorio == 1:
+                colorElegido = "Rojo"
+
+            elif aleatorio == 2:
+                colorElegido = "Azul"
+
+            elif aleatorio == 3:
+                colorElegido = "Verde"
+
+            else:
+                colorElegido = "Amarillo"
+
+            return colorElegido
+
+        
+        return colorElegido
+
+
+
 
 
 
