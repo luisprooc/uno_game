@@ -35,9 +35,26 @@ class Jugador():
                 return True,e.nombre
         return False
 
-    def sumarPuntos(self,jugadores,jugador):
-        for e in jugadores.mano:
-            jugador.puntos+=e[0]
+    def sumarPuntos(self,jugadores,jugador,barajas):
+        for j in jugadores:
+            for e in j.mano:
+                if e[0] not in barajas.valorCartas:
+                    jugador.puntos+=e[0]
+
+                else:
+                    jugador.puntos+= barajas.valorCartas[e[0]]
+
+    
+    def reiniciarMano(self,jugadores):
+        for j in jugadores:
+            for e in j.mano:
+                e = ""
+
+
+    def reiniciarEstado(self,jugadores):
+        for e in  jugadores.estado:
+            e = ""
+        
 
 
 try:
