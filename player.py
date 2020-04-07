@@ -1,76 +1,80 @@
-class Jugador():
-    def __init__(self,nombre):
-        self.nombre = nombre
-        self.puntos = 0
-        self.mano = []
-        self.estado = ""
+class Player():
+    def __init__(self,name):
+        self.name = name
+        self.points = 0
+        self.hand = []
+        self.state = ""
 
-    def mostrarMano(self):
+    def showHand(self):
         a = 0
-        for m in self.mano:
+        for m in self.hand:
             print(a,m)
             a+=1
 
     def Uno(self):
-        if len(self.mano) == 2:
+        if len(self.hand) == 2:
             print("Uno")
-            self.estado = "Uno"
+            self.state = "Uno"
 
         else:
-            print("Solo puedes decir uno cuando jugaras la penultima carta")
+            print("You can only say one as you play the penultimate card")
 
-    def mostrarOpciones(self):
-        print("Presiona 'r' para robar una carta")
-        print("Presiona 'q' para jugar carta")
-        print("Presiona 'w' para decir Uno y jugar la penultima carta")
+    def showOptions(self):
+        print("Press 'r' to draw a card")
+        print("Press 'q' to play card")
+        print("Press 'w' to say Uno and play the penultimate card")
 
-    def jugarCarta(self,opcion):
-        jugada = self.mano[opcion]
-        self.mano.remove(self.mano[opcion])
-        return jugada
+    def playCard(self,option):
+        play = self.hand[option]
+        self.hand.remove(self.hand[option])
+        return play
 
-    def verificarPuntos(self,jugadores):
-        for e in jugadores:
-            if e.puntos > 500:
-                return True,e.nombre
+    def checkPoints(self,players):
+        for e in players:
+            if e.points > 500:
+                return True,
         return False
 
-    def sumarPuntos(self,jugadores,jugador,barajas):
-        for j in jugadores:
-            for e in j.mano:
-                if e[0] not in barajas.valorCartas:
-                    jugador.puntos+=e[0]
+    def addPoints(self,players,player,cardPack):
+        for j in players:
+            for e in j.hand:
+                if e[0] not in cardPack.cardsValue:
+                    player.points+=e[0]
 
                 else:
-                    jugador.puntos+= barajas.valorCartas[e[0]]
+                    player.points+= cardPack.cardsValue[e[0]]
 
     
-    def reiniciarMano(self,jugadores):
-        for j in jugadores:
-            for e in j.mano:
+    def restartHand(self,players):
+        for j in players:
+            for e in j.hand:
                 e = ""
 
 
-    def reiniciarEstado(self,jugadores):
-        for e in  jugadores.estado:
+    def restartStates(self,players):
+        for e in players.state:
             e = ""
         
 
 
 try:
     while True:
-        totalJugadores = int(input("¿Cuantos jugadores participaran?: "))
-        if totalJugadores < 2 or totalJugadores > 10:
-            totalJugadores = int(input("¿Cuantos jugadores participaran?: "))
+        totalPlayers = int(input("How many players will participate?: "))
+        if totalPlayers  < 2 or  totalPlayers > 10:
+            totalPlayers  = int(input("How many players will participate?: "))
 
         else:
-            jugadores = []
-            for a in range(totalJugadores):
-                nombre = input("Nombre del jugador: ").capitalize()
-                jugador = Jugador(nombre)
-                jugadores.append(jugador)
+            players = []
+            for a in range(totalPlayers):
+                name = input("Player's name : ").capitalize()
+                player = Player(name)
+                players.append(player)
                 
             break
 
 except:
-    print("Introduciste una letra")
+    print("You entered a letter")
+
+
+
+
