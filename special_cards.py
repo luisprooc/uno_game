@@ -75,5 +75,6 @@ class WildCards():
 
 specials = WildCards()
 specials.generate()
-cardList = []
+
+
 

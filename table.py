@@ -1,27 +1,21 @@
 from card_pack import  *
 from player import *
-import os
-import time
-class Mesa():
-    def accion(self,jugadores):
-        print(" ")
-        print(" ")
-        self.__repJugadores(jugadores)
-        print(" ")
+import os,time
+class Table():
+    
+    def repPlayers(self,players):
+        for a in players:
+            print("{} : {}  {} ".format(a.name,a.points,a.state))
 
-    def __repJugadores(self,jugadores):
-        for a in jugadores:
-            print("{} : {}  {} ".format(a.nombre,a.puntos,a.estado))
+    def repCard(self,card):
+        print("In the table there is: \n{}".format(card))
+        return card
 
-    def repCartas(self,carta):
-        print("En la mesa hay: \n{}".format(carta))
-        return carta
-
-    def validarCarta(self,jugada,carta):
-        if carta[0] == jugada[0] or carta[1] == jugada[1]:
+    def validateCard(self,play,card):
+        if card[0] == play[0] or card[1] == play[1]:
             return True
         
-        elif jugada[0] == "+ 4" or jugada[0] == "Elegir color":
+        elif play[0] == "+ 4" or play[0] == "Choose color":
             return True
             
 
@@ -30,17 +24,17 @@ class Mesa():
 
 
 
-    def inicial(self,barajas):
-        rango = randint(0,len(barajas.mazo)-1)
-        check = barajas.mazo[rango]
-        while check[0] in ["+ 2","Retorno","Intermision","+ 4","Elegir color"]:
-            rango = randint(0,len(barajas.mazo)-1)
-            check = barajas.mazo[rango]
+    def initial(self,cardPack):
+        choose = randint(0,len(cardPack.deck)-1)
+        check = cardPack.deck[choose]
+        while check[0] in ["+ 2","Return","Intermission","+ 4","Choose color"]:
+            choose = randint(0,len(cardPack.deck)-1)
+            check = cardPack.deck[choose]
             
 
-        print("En la mesa hay: \n{}".format(barajas.mazo[rango]))
-        return barajas.mazo[rango]
-        barajas.mazo.remove(barajas.mazo[rango])
+        print("In the table there is: \n{}".format(cardPack.deck[choose]))
+        return cardPack.deck[choose]
+        cardPack.deck.remove(cardPack.deck[choose])
 
 
 
@@ -50,8 +44,10 @@ class Mesa():
 
 #jugadores[s] = especiales.intermision(jugadores)
 
-tablero = Mesa()
-tablero.accion(jugadores)
-barajas.repartir(jugadores)
-rondaIniciada = True
-jugada = None
+board = Table()
+board.repPlayers(players)
+cardPack.handOut(players)
+roundStarted = True
+play = None
+
+
