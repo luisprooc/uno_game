@@ -6,9 +6,10 @@ class Table():
     def repPlayers(self,players):
         for a in players:
             print("{} : {}  {} ".format(a.name,a.points,a.state))
+        print("\n")
 
     def repCard(self,card):
-        print("In the table there is: \n{}".format(card))
+        print("In the table there is: \n{} \n".format(card))
         return card
 
     def validateCard(self,play,card):
@@ -32,7 +33,7 @@ class Table():
             check = cardPack.deck[choose]
             
 
-        print("In the table there is: \n{}".format(cardPack.deck[choose]))
+        print("In the table there is: \n{} \n".format(cardPack.deck[choose]) )
         return cardPack.deck[choose]
         cardPack.deck.remove(cardPack.deck[choose])
 
@@ -45,7 +46,6 @@ class Table():
 #jugadores[s] = especiales.intermision(jugadores)
 
 board = Table()
-board.repPlayers(players)
 cardPack.handOut(players)
 roundStarted = True
 play = None

@@ -10,130 +10,130 @@ from table import *
 
 
 while True:
-    for s in range(0,len(jugadores)):
+    for s in range(0,len(players)):
         os.system("cls")
-        tablero.accion(jugadores)
-        if rondaIniciada:
-            carta = tablero.inicial(barajas)
-            rondaIniciada = False
+        board.repPlayers(players)
+        if roundStarted:
+            card = board.initial(cardPack)
+            roundStarted = False
         
         else:
-            tablero.repCartas(carta)
+            board.repCard(card)
             
-        print(" ")
-        print("{} tu mano es :".format(jugadores[s].nombre))
-        print("  ")
-        jugadores[s].mostrarMano()
-        print(" ")
-        jugadores[s].mostrarOpciones()
-        desicion = input("¿Que deseas hacer?: ")
+        print("{} your hand is  :\n".format(players[s].name))
+        players[s].showHand()
+    
+        players[s].showOptions()
+        desicion = input("What do you want to do?: ")
         while desicion not in ["q","r","w"]:
             os.system("cls")
-            tablero.accion(jugadores)
-            if rondaIniciada:
-                carta = tablero.inicial(barajas)
-                rondaIniciada = False
+            board.repPlayers(players)
+            if roundStarted:
+                card = board.initial(cardPack)
+                roundStarted = False
         
             else:
-                tablero.repCartas(carta)
-            
-            print(" ")
-            print("{} tu mano es :".format(jugadores[s].nombre))
-            print("  ")
-            jugadores[s].mostrarMano()
-            print(" ")
-
-            jugadores[s].mostrarOpciones()
-            desicion = input("¿Que deseas hacer?: ")
+                print("{} your hand is :".format(players[s].name))
+                players[s].showHand()
+                players[s].showOptions()
+                desicion = input("What do you want to do?: \n")
 
         if desicion == "q":
             try:
-                opcion = int(input(" Que carta deseas jugar? :  "))
-                jugada = jugadores[s].jugarCarta(opcion)
-                if jugada[0] in barajas.valorCartas:
-                    if tablero.validarCarta:
-                        if jugada[0] == "Retorno":
-                            jugadores.reverse()
+                option = int(input(" what card do you want to play? :  "))
+                play = players[s].playCard(option)
+                if play[0] in cardPack.cardsValue:
+                    if board.validateCard:
+                        if play[0] == "Return":
+                            players.reverse()
 
-                        elif jugada[0] == "Elegir color":
-                            especiales.mostrarColores()
-                            color = input("Elige un color: ")
-                            especiales.cambiarColor(jugada,especiales.opcionColor(color))
+                        elif play[0] == "Choose color":
+                            specials.showColors()
+                            color = input("Choose a color: ")
+                            specials.changeColor(play,specials.optionColor(color))
 
 
-                    carta = jugada
-                    tablero.repCartas(carta)
+                    card = play
+                    board.repCard(card)
                     
-                elif tablero.validarCarta(jugada,carta):
-                    carta = jugada
-                    tablero.repCartas(carta)
+                elif board.validateCard(play,card):
+                    card = play
+                    board.repCard(card)
                 
                 else:
-                    jugadores[s].mano.append(jugada)
-                    print("Haz sido penalizado por jugada incorrecta")
-                    barajas.robar(jugadores[s])
+                    players[s].hand.append(play)
+                    print("You have been penalized for incorrect play")
+                    cardPack.steal(players[s])
                     time.sleep(2)
                 
             except:
-                print("Mira bien la longitud de tu mano")
-                print("Penalizado por no atencionar bien tu mano")
+                print("watch good the longitude your hand \n Penalized for not paying  attention to your hand")
                 time.sleep(2)
 
         elif desicion == "r":
-            barajas.robar(jugadores[s])
+            cardPack.steal(players[s])
             time.sleep(2)
             
         else:
             try:
-                jugadores[s].Uno()
-                opcion = int(input(" Que carta deseas jugar? :  "))
-                jugada = jugadores[s].jugarCarta(opcion)
-                if jugada[0] in barajas.valorCartas:
-                    if tablero.validarCarta:
-                        if jugada[0] == "Retorno":
-                            jugadores.reverse()
+                players[s].Uno()
+                option = int(input(" what card do you want to play? :  "))
+                play = players[s].playCard(option)
+                if play[0] in cardPack.cardsValue:
+                    if board.validateCard:
+                        if play[0] == "Return":
+                            players.reverse()
+
+                        elif play[0] == "Choose color":
+                            specials.showColors()
+                            color = input("Choose a color: ")
+                            specials.changeColor(play,specials.optionColor(color))
 
 
-                if tablero.validarCarta(jugada,carta):
-                    carta = jugada
-                    tablero.repCartas(carta)
+                    card = play
+                    board.repCard(card)
+                    
+                elif board.validateCard(play,card):
+                    card = play
+                    board.repCard(card)
                 
                 else:
-                    jugadores[s].mano.append(jugada)
-                    print("Haz sido penalizado por jugada incorrecta")
-                    barajas.robar(jugadores[s])
-                    time.sleep(1)
-                time.sleep(2)
-
+                    players[s].hand.append(play)
+                    print("You have been penalized for incorrect play")
+                    cardPack.steal(players[s])
+                    time.sleep(2)
+                
             except:
-                print("Mira bien la longitud de tu mano")
-                print("Penalizado por no atencionar bien tu mano")
+                print("watch good the longitude your hand \n Penalized for not paying  attention to your hand ")
                 time.sleep(2)
 
+            
 
-        if len(jugadores[s].mano) >= 2 and jugadores[s].estado == "Uno":
-            jugadores[s].estado = ""
 
-        if len(jugadores[s].mano) == 1 and jugadores[s].estado == "":
-            print("Haz sido penalizado por no decir 'Uno' ")
-            barajas.robar(jugadores[s])
+        if len(players[s].hand) >= 2 and players[s].state == "Uno":
+            players[s].state = ""
+
+        if len(players[s].hand) == 1 and players[s].state == "":
+            print("You have been penalized for not saying 'Uno' ")
+            cardPack.steal(players[s])
             time.sleep(2)
         
 
-        if len(jugadores[s].mano) == 0:
-            print("{} ha ganado esta ronda".format(jugadores[s].nombre))
-            jugadores[s].sumarPuntos(jugadores,jugadores[s],barajas)
-            tablero = Mesa()
-            tablero.accion(jugadores)
-            barajas.repartir(jugadores)
-            rondaIniciada = True
-            jugadores[s].reiniciarMano(jugadores)
-            jugadores[s].reiniciarEstado(jugadores)
-            print("Nueva ronda")
+        if len(players[s].hand) == 0:
+            print("{} has won this round".format(players[s].name))
+            players[s].addPoints(players,players[s],cardPack)
+            #tablero = Mesa()
+            #tablero.accion(jugadores)
+            players[s].restartHand(players)
+            players[s].restartStates(players)
+            cardPack.handOut(players)
+            roundStarted = True
+            print("New round")
             time.sleep(2)
             os.system("cls")
 
 
 
-        if jugadores[s].verificarPuntos(jugadores):
+        if players[s].checkPoints(players):
+            print("{} has won this match".format(players[s].name))
             break

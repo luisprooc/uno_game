@@ -11,8 +11,8 @@ class Deck():
             self.deck += e
 
     def steal(self,player):
-        choose = randint(0,len(self.mazo)-1)
-        print("You took the card{}".format(self.deck[choose]))
+        choose = randint(0,len(self.deck)-1)
+        print("You took the card {}".format(self.deck[choose]))
         player.hand.append(self.deck[choose])
         self.deck.remove(self.deck[choose])
 

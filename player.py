@@ -10,6 +10,8 @@ class Player():
         for m in self.hand:
             print(a,m)
             a+=1
+        
+        print("\n")
 
     def Uno(self):
         if len(self.hand) == 2:
@@ -22,7 +24,7 @@ class Player():
     def showOptions(self):
         print("Press 'r' to draw a card")
         print("Press 'q' to play card")
-        print("Press 'w' to say Uno and play the penultimate card")
+        print("Press 'w' to say Uno and play the penultimate card \n")
 
     def playCard(self,option):
         play = self.hand[option]

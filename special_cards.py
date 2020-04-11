@@ -30,15 +30,13 @@ class WildCards():
     def changeColor(self,play,color):
         play[1] = color
         return play
+        play[1] = "Black"
 
     def showColors(self):
-        print("Press 1 to choose red color")
-        print("Press 2 to choose blue color")
-        print("Press 3 to choose green color")
-        print("Press 4 to choose yellow color")
-        print("Press any key for random color")
+        print("Press 1 to choose red color \n Press 2 to choose blue color \n Press 3 to choose green color \n Press 4 to choose yellow color \n Press any key for random color")
 
-    def opcionColor(self,color):
+
+    def optionColor(self,color):
         chosenColor = ""
         if color == "1":
             chosenColor = "Red"
@@ -53,20 +51,9 @@ class WildCards():
             chosenColor = "Yellow"
 
         else:
+            colors = ["Red","Blue","Green","Yellow"]
             random = randint(1,4)
-            if random == 1:
-                chosenColor = "Red"
-
-            elif arandom  == 2:
-                chosenColor= "Blue"
-
-            elif random == 3:
-                chosenColor= "Green"
-
-            else:
-                chosenColor = "Yellow"
-
-            return chosenColor
+            chosenColor = colors[random]
 
         
         return chosenColor
@@ -75,6 +62,5 @@ class WildCards():
 
 specials = WildCards()
 specials.generate()
-
 
 

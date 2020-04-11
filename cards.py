@@ -1,75 +1,32 @@
 class Cards():
     def __init__(self):
         self.list = []
-        self.color = ["Red","Blue","Green","Yellow"] 
-        self.colors = 0
+        self.colors = ["Red","Blue","Green","Yellow"] 
 
-    def generateRed(self):
+    def generate(self):
         self.__generateComodines()
-        for a in range(10):
-            if a!= 0:
-                self.list.append([a,self.color[self.colors]])
-                self.list.append([a,self.color[self.colors]])
-    
+        for c in self.colors:
+            for a in range(10):
+                if a!= 0:
+                    self.list.append([a,c])
+                    self.list.append([a,c])
+        
 
-            else:
-                self.list.append([a,self.color[self.colors]])
+                else:
+                    self.list.append([a,c])
 
-        self.colors+= 1
+
 
     def __generateComodines(self):
-        wildcards= ["Retorno","Intermision","+ 2"]
-        for c in wildcards:
-            self.list.append([c,self.color[self.colors]])
-            self.list.append([c,self.color[self.colors]])
+        wildcards= ["Return","Intermission","+ 2"]
+        for color in self.colors:
+            for c in wildcards:
+                self.list.append([c,color])
+                self.list.append([c,color])
 
-    
-    def generateBlue(self):
-        self.__generateComodines()
-        for a in range(10):
-            if a!= 0:
-                self.list.append([a,self.color[self.colors]])
-                self.list.append([a,self.color[self.colors]])
-
-            else:
-                self.list.append([a,self.color[self.colors]])
-
-        self.colors+= 1
-
-
-    def generateGreen(self):
-        self.__generateComodines()
-        for a in range(10):
-            if a!= 0:
-                self.list.append([a,self.color[self.colors]])
-                self.list.append([a,self.color[self.colors]])
-
-            else:
-                self.list.append([a,self.color[self.colors]])
-
-        self.colors+= 1
-
-
-    def generateYellow(self):
-        self.__generateComodines()
-        for a in range(10):
-            if a!= 0:
-                self.list.append([a,self.color[self.colors]])
-                self.list.append([a,self.color[self.colors]])
-
-            else:
-                self.list.append([a,self.color[self.colors]])
-
-        self.colors+= 1
-
-
-            
-    
+ 
     
 
 
 commonCards = Cards()
-commonCards.generateBlue()
-commonCards.generateGreen()
-commonCards.generateRed()
-commonCards.generateYellow()
+commonCards.generate()
