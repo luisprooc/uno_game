@@ -20,20 +20,25 @@ class WildCards():
         
         return True
 
-    def intermission(self,players):
-        b = 0
-        return players[b+1]
+    def Skip(self,players,player):
+        for c in range(0,len(players)-1):
+            if players[c] == player:
+                players.remove(players[c])
+                return players
+
+
 
     def returnCard(self,players):
         return players.reverse()
 
     def changeColor(self,play,color):
-        play[1] = color
+        change = play
+        change[1] = color
         return play
-        play[1] = "Black"
+        
 
     def showColors(self):
-        print("Press 1 to choose red color \n Press 2 to choose blue color \n Press 3 to choose green color \n Press 4 to choose yellow color \n Press any key for random color")
+        print(" Press 1 to choose red color \n Press 2 to choose blue color \n Press 3 to choose green color \n Press 4 to choose yellow color \n Press any key for random color")
 
 
     def optionColor(self,color):
@@ -59,8 +64,23 @@ class WildCards():
         return chosenColor
 
 
+    def take2(self,player,cardPack):
+        print("{} you have taken 2 cards \n".format(player.name))
+        for a in range(2):
+            cardPack.steal(player)
+                            
+
+    
+    def affected(self,players,player):
+        for x in range(0,len(players)-1):
+            if players[x] == player:
+                p = players[x+1]
+                return p
+
+
+
+
 
 specials = WildCards()
 specials.generate()
-
 

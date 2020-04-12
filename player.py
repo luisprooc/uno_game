@@ -54,8 +54,8 @@ class Player():
 
 
     def restartStates(self,players):
-        for e in players.state:
-            e = ""
+        for e in players:
+            e.state = ""
         
 
 

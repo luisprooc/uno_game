@@ -52,6 +52,21 @@ while True:
                             color = input("Choose a color: ")
                             specials.changeColor(play,specials.optionColor(color))
 
+                        elif play[0] == "Intermission":
+                            omitted = True
+                            p = specials.affected(players,players[s])
+                            index = players.index(p)
+                            players = specials.Skip(players,p)
+                            print("{} has been skip".format(p.name))
+                            time.sleep(3)
+
+                        elif play[0] == "+ 2":
+                            p = specials.affected(players,players[s])
+                            specials.take2(p,cardPack)
+                            print("{} have used + 2 on you ".format(players[s].name))
+                            time.sleep(4)
+
+                        
 
                     card = play
                     board.repCard(card)
@@ -109,6 +124,10 @@ while True:
 
             
 
+
+        if omitted:
+            omitted = False
+            players.insert(index,p)
 
         if len(players[s].hand) >= 2 and players[s].state == "Uno":
             players[s].state = ""

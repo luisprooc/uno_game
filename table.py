@@ -47,7 +47,9 @@ class Table():
 
 board = Table()
 cardPack.handOut(players)
+board.repPlayers(players)
 roundStarted = True
 play = None
+omitted = False
 
 
