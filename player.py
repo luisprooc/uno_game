@@ -4,6 +4,7 @@ class Player():
         self.points = 0
         self.hand = []
         self.state = ""
+        self.notOmmited = True
 
     def showHand(self):
         a = 0

@@ -20,16 +20,17 @@ class WildCards():
         
         return True
 
-    def Skip(self,players,player):
-        for c in range(0,len(players)-1):
-            if players[c] == player:
-                players.remove(players[c])
-                return players
+    def Skip(self,player):
+        player.notOmmited= False
 
 
 
-    def returnCard(self,players):
-        return players.reverse()
+    def returnCard(self,players,affected):
+        players.reverse()
+        players.remove(affected)
+        players.insert(0,affected)
+        print(players)
+
 
     def changeColor(self,play,color):
         change = play
@@ -60,7 +61,6 @@ class WildCards():
             random = randint(1,4)
             chosenColor = colors[random]
 
-        
         return chosenColor
 
 
@@ -72,10 +72,15 @@ class WildCards():
 
     
     def affected(self,players,player):
-        for x in range(0,len(players)-1):
+        for x in range(-1,len(players)-1):
             if players[x] == player:
                 p = players[x+1]
                 return p
+
+    def reSkip(self,players):
+        for p in players:
+            p.notOmmited = True
+        
 
 
 
@@ -84,3 +89,10 @@ class WildCards():
 specials = WildCards()
 specials.generate()
 
+
+##test ####
+"""
+names = ["Juan","Marco","Lucas","Maria"]
+affected = specials.affected(names,"Juan")
+specials.returnCard(names,affected)
+"""
