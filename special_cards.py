@@ -12,10 +12,9 @@ class WildCards():
             else:
                 self.list.append(["Choose color",self.color])
 
-    def take4(self,board,player):
-        tableCard = board.repCards()
+    def noCard(self,card,player):
         for a in player.hand:
-            if a[0] ==  tableCard[0] or a[1] ==  tableCard[1]:
+            if a[0] ==  card[0] or a[1] ==  card[1]:
                 return False
         
         return True
@@ -80,6 +79,28 @@ class WildCards():
     def reSkip(self,players):
         for p in players:
             p.notOmmited = True
+
+    
+    def take4(self,player,nextPlayer,validate,cardPack):
+        if validate:
+            print("{} you have taken 4 cards \n".format(nextPlayer.name))
+            for t in range(5):
+                cardPack.steal(nextPlayer)
+
+            self.Skip(player)
+        else:
+
+            print("{} you have taken 6 cards \n".format(player.name))
+            for t in range(7):
+                cardPack.steal(player)
+
+        return ""
+
+
+
+
+
+
         
 
 
@@ -96,3 +117,5 @@ names = ["Juan","Marco","Lucas","Maria"]
 affected = specials.affected(names,"Juan")
 specials.returnCard(names,affected)
 """
+
+

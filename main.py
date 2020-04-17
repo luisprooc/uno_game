@@ -72,6 +72,18 @@ while True:
                                 time.sleep(4)
 
                             
+                            elif play[0] == "+ 4":
+                                specials.showColors()
+                                color = input("Choose a color: ")
+                                specials.changeColor(play,specials.optionColor(color))
+                                p = specials.affected(players,players[s])
+                                validate = specials.noCard(card,players[s])
+                                specials.take4(players[s],p,validate,cardPack)
+                                time.sleep(4)
+                                
+
+
+                            
 
                         card = play
                         board.repCard(card)
