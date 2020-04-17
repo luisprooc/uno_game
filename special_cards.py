@@ -24,17 +24,17 @@ class WildCards():
 
 
 
-    def returnCard(self,players,affected):
+    def returnCard(self,players,p):
         players.reverse()
-        players.remove(affected)
-        players.insert(0,affected)
-        print(players)
+        players.remove(p)
+        players.insert(0,p)
+        return players
 
 
     def changeColor(self,play,color):
         change = play
         change[1] = color
-        return play
+        return change
         
 
     def showColors(self):
@@ -87,7 +87,7 @@ class WildCards():
             for t in range(5):
                 cardPack.steal(nextPlayer)
 
-            self.Skip(player)
+            self.Skip(nextPlayer)
         else:
 
             print("{} you have taken 6 cards \n".format(player.name))
@@ -114,8 +114,8 @@ specials.generate()
 ##test ####
 """
 names = ["Juan","Marco","Lucas","Maria"]
-affected = specials.affected(names,"Juan")
-specials.returnCard(names,affected)
+p = specials.affected(names,"Juan")
+print(specials.returnCard(names,p))
 """
 
 

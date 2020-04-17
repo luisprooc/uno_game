@@ -49,9 +49,10 @@ class Player():
 
     
     def restartHand(self,players):
-        for j in players:
-            for e in j.hand:
-                e = ""
+        for player in players:
+            for hand in player.hand:
+                hamd = None
+            
 
 
     def restartStates(self,players):
