@@ -4,6 +4,7 @@ class Player():
         self.points = 0
         self.hand = []
         self.state = ""
+        self.notOmmited = True
 
     def showHand(self):
         a = 0
@@ -34,7 +35,7 @@ class Player():
     def checkPoints(self,players):
         for e in players:
             if e.points > 500:
-                return True,
+                return True
         return False
 
     def addPoints(self,players,player,cardPack):
@@ -48,14 +49,15 @@ class Player():
 
     
     def restartHand(self,players):
-        for j in players:
-            for e in j.hand:
-                e = ""
+        for player in players:
+            player.hand.clear()
+        
+            
 
 
     def restartStates(self,players):
-        for e in players.state:
-            e = ""
+        for e in players:
+            e.state = ""
         
 
 
@@ -76,6 +78,7 @@ try:
 
 except:
     print("You entered a letter")
+
 
 
 

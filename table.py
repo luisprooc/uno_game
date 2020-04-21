@@ -38,16 +38,30 @@ class Table():
         cardPack.deck.remove(cardPack.deck[choose])
 
 
+    def rules(self):
+        allRules = " ..................................................  \n - Incorrect play: steal a card. \n - Don't say 'Uno' before to play the penultimate card: steal a card. \n - Enter a number that exceeds the length of your hand: You don't play this turn. \n - you must only play +4 when you have no cards matching the card on the table: otherwise you will take six cards. \n  .................................................. "
+        
+        print("Rules\n",allRules)
+                    
+                    
 
 
 
 
 
-#jugadores[s] = especiales.intermision(jugadores)
+
 
 board = Table()
 cardPack.handOut(players)
+board.repPlayers(players)
 roundStarted = True
 play = None
 
 
+
+
+
+
+board.rules()
+
+ready = input("Press any key to start: ")
