@@ -180,8 +180,6 @@ while True:
             if len(players[s].hand) == 0:
                 print("{} has won this round".format(players[s].name))
                 players[s].addPoints(players,players[s],cardPack)
-                #tablero = Mesa()
-                #tablero.accion(jugadores)
                 players[s].restartHand(players)
                 players[s].restartStates(players)
                 cardPack.fillDeck(cardList)
