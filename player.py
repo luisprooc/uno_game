@@ -35,7 +35,7 @@ class Player():
     def checkPoints(self,players):
         for e in players:
             if e.points > 500:
-                return True,
+                return True
         return False
 
     def addPoints(self,players,player,cardPack):
@@ -50,8 +50,8 @@ class Player():
     
     def restartHand(self,players):
         for player in players:
-            for hand in player.hand:
-                hamd = None
+            player.hand.clear()
+        
             
 
 
@@ -78,6 +78,7 @@ try:
 
 except:
     print("You entered a letter")
+
 
 
 
