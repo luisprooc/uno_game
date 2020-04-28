@@ -47,40 +47,40 @@ while True:
                     option = int(input(" what card do you want to play? :  "))
                     play = players[s].playCard(option)
                     if play[0] in cardPack.cardsValue:
-                        if board.validateCard:
-                            if play[0] == "Return":
-                                p = specials.affected(players,players[s])
-                                specials.returnCard(players,p)
+                
+                        if play[0] == "Return":
+                            p = specials.affected(players,players[s])
+                            specials.returnCard(players,p)
 
-                            elif play[0] == "Choose color":
-                                specials.showColors()
-                                color = input("Choose a color: ")
-                                specials.changeColor(play,specials.optionColor(color))
+                        elif play[0] == "Choose color":
+                            specials.showColors()
+                            color = input("Choose a color: ")
+                            specials.changeColor(play,specials.optionColor(color))
 
-                            elif play[0] == "Intermission":
-                                p = specials.affected(players,players[s])
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                time.sleep(3)
+                        elif play[0] == "Intermission":
+                            p = specials.affected(players,players[s])
+                            specials.Skip(p)
+                            print("{} has been skip".format(p.name))
+                            time.sleep(3)
 
-                            elif play[0] == "+ 2":
-                                p = specials.affected(players,players[s])
-                                specials.take2(p,cardPack)
-                                print("{} have used + 2 on you ".format(players[s].name))
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                time.sleep(4)
+                        elif play[0] == "+ 2":
+                            p = specials.affected(players,players[s])
+                            specials.take2(p,cardPack)
+                            print("{} have used + 2 on you ".format(players[s].name))
+                            specials.Skip(p)
+                            print("{} has been skip".format(p.name))
+                            time.sleep(4)
 
+                        
+                        elif play[0] == "+ 4":
+                            specials.showColors()
+                            color = input("Choose a color: ")
+                            specials.changeColor(play,specials.optionColor(color))
+                            p = specials.affected(players,players[s])
+                            validate = specials.noCard(card,players[s])
+                            specials.take4(players[s],p,validate,cardPack)
+                            time.sleep(4)
                             
-                            elif play[0] == "+ 4":
-                                specials.showColors()
-                                color = input("Choose a color: ")
-                                specials.changeColor(play,specials.optionColor(color))
-                                p = specials.affected(players,players[s])
-                                validate = specials.noCard(card,players[s])
-                                specials.take4(players[s],p,validate,cardPack)
-                                time.sleep(4)
-                                
 
 
                             
@@ -112,41 +112,40 @@ while True:
                     option = int(input(" what card do you want to play? :  "))
                     play = players[s].playCard(option)
                     if play[0] in cardPack.cardsValue:
-                        if board.validateCard:
-                            if play[0] == "Return":
-                                p = specials.affected(players,players[s])
-                                specials.returnCard(players,p)
+                        if play[0] == "Return":
+                            p = specials.affected(players,players[s])
+                            specials.returnCard(players,p)
 
-                            elif play[0] == "Choose color":
-                                specials.showColors()
-                                color = input("Choose a color: ")
-                                specials.changeColor(play,specials.optionColor(color))
+                        elif play[0] == "Choose color":
+                            specials.showColors()
+                            color = input("Choose a color: ")
+                            specials.changeColor(play,specials.optionColor(color))
 
+                        
+                        elif play[0] == "Intermission":
+                            p = specials.affected(players,players[s])
+                            specials.Skip(p)
+                            print("{} has been skip".format(p.name))
+                            time.sleep(3)
+
+                        elif play[0] == "+ 2":
+                            p = specials.affected(players,players[s])
+                            specials.take2(p,cardPack)
+                            print("{} have used + 2 on you ".format(players[s].name))
+                            specials.Skip(p)
+                            print("{} has been skip".format(p.name))
+                            time.sleep(4)
+
+                        
+                        elif play[0] == "+ 4":
+                            specials.showColors()
+                            color = input("Choose a color: ")
+                            specials.changeColor(play,specials.optionColor(color))
+                            p = specials.affected(players,players[s])
+                            validate = specials.noCard(card,players[s])
+                            specials.take4(players[s],p,validate,cardPack)
+                            time.sleep(4)
                             
-                            elif play[0] == "Intermission":
-                                p = specials.affected(players,players[s])
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                time.sleep(3)
-
-                            elif play[0] == "+ 2":
-                                p = specials.affected(players,players[s])
-                                specials.take2(p,cardPack)
-                                print("{} have used + 2 on you ".format(players[s].name))
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                time.sleep(4)
-
-                            
-                            elif play[0] == "+ 4":
-                                specials.showColors()
-                                color = input("Choose a color: ")
-                                specials.changeColor(play,specials.optionColor(color))
-                                p = specials.affected(players,players[s])
-                                validate = specials.noCard(card,players[s])
-                                specials.take4(players[s],p,validate,cardPack)
-                                time.sleep(4)
-                                
 
 
                         card = play
