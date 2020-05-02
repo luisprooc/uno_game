@@ -4,7 +4,7 @@ class Table():
     
     def repPlayers(self,players):
         for a in players:
-            print("{} : {}  {} ".format(a.name,a.points,a.state))
+            print("{} : {}  {} {} ".format(a.name,a.points,a.state,a.retired))
         print("\n")
 
     def repCard(self,card):

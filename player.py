@@ -5,6 +5,7 @@ class Player():
         self.hand = []
         self.state = ""
         self.notOmmited = True
+        self.retired = ""
 
     def showHand(self):
         a = 0
@@ -23,9 +24,7 @@ class Player():
             print("You can only say one as you play the penultimate card")
 
     def showOptions(self):
-        print("Press 'r' to draw a card")
-        print("Press 'q' to play card")
-        print("Press 'w' to say Uno and play the penultimate card \n")
+        print("Press 'q' to play card \nPress 'w' to say Uno and play the penultimate card \nPress 'e' to retire\nPress 'r' to draw a card\n")
 
     def playCard(self,option):
         play = self.hand[option]
@@ -58,6 +57,21 @@ class Player():
     def restartStates(self,players):
         for e in players:
             e.state = ""
+
+    def giveUp(self,player):
+        player.retired = "Retired"
+
+    def checkRetired(self,players):
+        cont = 0
+        for r in players:
+            if r.retired == "":
+                cont+= 1
+
+        if cont == 1:
+            return True
+        
+        else:
+            return False
         
 
 

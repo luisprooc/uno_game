@@ -19,9 +19,10 @@ class Deck():
     def handOut(self,players):
         for j in players:
             for s in range(0,7):
-                choose = randint(0,len(self.deck)-1)
-                j.hand.append(self.deck[choose])
-                self.deck.remove(self.deck[choose])
+                if j.retired == "":
+                    choose = randint(0,len(self.deck)-1)
+                    j.hand.append(self.deck[choose])
+                    self.deck.remove(self.deck[choose])
 
 
 

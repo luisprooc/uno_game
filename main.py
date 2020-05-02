@@ -35,15 +35,22 @@ from table import *
 
 while True:
     for s in range(0,len(players)):
-        if players[s].notOmmited:
+        if players[s].notOmmited and players[s].retired == "":
+            if players[s].checkRetired(players):
+                print("{} has won this macth".format(players[s].name))
+                sys.exit()
+
+                
             specials.reSkip(players)
             os.system("cls")
             board.repPlayers(players)
             if roundStarted:
+                print("Deck: {}".format(len(cardPack.deck)))
                 card = board.initial(cardPack)
                 roundStarted = False
             
             else:
+                print("Deck: {}".format(len(cardPack.deck)))
                 board.repCard(card)
                 
             print("{} your hand is  :\n".format(players[s].name))
@@ -51,14 +58,16 @@ while True:
         
             players[s].showOptions()
             desicion = input("What do you want to do?: ")
-            while desicion not in ["q","r","w"]:
+            while desicion not in ["q","r","w","e"]:
                 os.system("cls")
                 board.repPlayers(players)
                 if roundStarted:
+                    print("Deck: {}".format(len(cardPack.deck)))
                     card = board.initial(cardPack)
                     roundStarted = False
             
                 else:
+                    print("Deck: {}".format(len(cardPack.deck)))
                     board.repCard(card)
 
                 print("{} your hand is :".format(players[s].name))
@@ -141,6 +150,12 @@ while True:
             elif desicion == "r":
                 cardPack.steal(players[s])
                 input("Press any key to continue: ")
+
+            
+            elif desicion == "e":
+                players[s].giveUp(players[s])
+                input("Press any key to continue: ")
+                
                 
             else:
                 while True:
@@ -217,6 +232,9 @@ while True:
             if len(players[s].hand) >= 2 and players[s].state == "Uno":
                 players[s].state = ""
 
+            
+
+
             if len(players[s].hand) == 1 and players[s].state == "":
                 print("You have been penalized for not saying 'Uno' ")
                 cardPack.steal(players[s])
@@ -239,7 +257,9 @@ while True:
 
             if players[s].checkPoints(players):
                 print("{} has won this match".format(players[s].name))
-                break
+                sys.exit()
+
+
 
 
     
