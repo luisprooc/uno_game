@@ -1,20 +1,33 @@
+import os,sys
 print(" ██╗   ██╗███╗   ██╗ ██████╗ \n ██║   ██║████╗  ██║██╔═══██╗ \n ██║   ██║██╔██╗ ██║██║   ██║ \n ██║   ██║██║╚██╗██║██║   ██║ \n ╚██████╔╝██║ ╚████║╚██████╔╝ \n ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ \n ")
 
 print(" It is a game that is played from 2 to 10 players \n as each player receives 7 cards to start. \n Your objective is to reach 500 points to defeat your teammates. \n  \n")
 
 
-print(' ________ ________ ________ ________ ________ ________ ________ ________ ________ \n """""""" """""""" """""""" """""""" """""""" """""""" """""""" """""""" """"""""')
+print("...........Menu........... \n \n Press '1' to see the credits \n Press '2' to how to play \n Press '3' to exit \n Press any key to play \n........................... \n")
+def menu(option):
+    if option != "1" and option != "2" and option != "3":
+        return 0
 
-print("Menu \n Press '1' to see the credits \n Press '2' to how to play \n Press any key to play \n ")
-option = input("What do you will to do?: ")
-if option == "1":
-    print("Press '2' to how to play \n Press any key to play")
-    option = input("What do you will to do?: ")
+    else:
+        if option == "1":
+            os.system("cls")
+            print("I'm Luis Rosario the developer of this project with which I've practiced Poo in my learning at the hands of the Cincinnatus Institute of Craftsmanship\n \n")
+            print(".........Menu......... \n \nPress '2' to how to play \nPress '3' to exit\nPress any key to play \n........................ \n")
+            return menu(input("What do you will to do?: "))
+        
+        elif option == "2":
+            os.system("cls")
+            print("To play you just have to enter the number of their players and their names, Then in order each one must make his move the options that you have will appear on the screen and \nyou must choose one option and follow the rules that will appear at that time \n \n")
+            print(".........Menu......... \n \nPress '1' to see the credits \nPress '3' to exit\nPress any key to play \n........................ \n")
+            return menu(input("What do you will to do?: "))
 
-if option == "2":
-    pass
+        else:
+            sys.exit()
 
 
+menu(input("What do you will to do?: "))
+os.system("cls")
 
 from table import *
 
@@ -51,8 +64,8 @@ while True:
                 print("{} your hand is :".format(players[s].name))
                 players[s].showHand()
                 players[s].showOptions()
-                desicion = input("What do you want to do?: ")
                 print("You must choose an option displayed on the screen")
+                desicion = input("What do you want to do?: ")
 
             if desicion == "q":
                 while True:
@@ -69,17 +82,19 @@ while True:
                             if play[0] == "Return":
                                 p = specials.affected(players,players[s])
                                 specials.returnCard(players,p)
+                                input("Press any key to continue: ")
 
                             elif play[0] == "Choose color":
                                 specials.showColors()
                                 color = input("Choose a color: ")
                                 specials.changeColor(play,specials.optionColor(color))
+                                input("Press any key to continue: ")
 
                             elif play[0] == "Intermission":
                                 p = specials.affected(players,players[s])
                                 specials.Skip(p)
                                 print("{} has been skip".format(p.name))
-                                time.sleep(3)
+                                input("Press any key to continue: ")
 
                             elif play[0] == "+ 2":
                                 p = specials.affected(players,players[s])
@@ -87,7 +102,7 @@ while True:
                                 print("{} have used + 2 on you ".format(players[s].name))
                                 specials.Skip(p)
                                 print("{} has been skip".format(p.name))
-                                time.sleep(4)
+                                input("Press any key to continue: ")
 
                             
                             elif play[0] == "+ 4":
@@ -97,7 +112,7 @@ while True:
                                 p = specials.affected(players,players[s])
                                 validate = specials.noCard(card,players[s])
                                 specials.take4(players[s],p,validate,cardPack)
-                                time.sleep(4)
+                                input("Press any key to continue: ")
                                 
 
 
@@ -109,12 +124,13 @@ while True:
                         elif board.validateCard(play,card):
                             card = play
                             board.repCard(card)
+                            input("Press any key to continue: ")
                         
                         else:
                             players[s].hand.append(play)
                             print("You have been penalized for incorrect play")
                             cardPack.steal(players[s])
-                            time.sleep(2)
+                            input("Press any key to continue: ")
                     
                         break
                     except:
@@ -124,7 +140,7 @@ while True:
 
             elif desicion == "r":
                 cardPack.steal(players[s])
-                time.sleep(2)
+                input("Press any key to continue: ")
                 
             else:
                 while True:
@@ -140,18 +156,20 @@ while True:
                             if play[0] == "Return":
                                 p = specials.affected(players,players[s])
                                 specials.returnCard(players,p)
+                                input("Press any key to continue: ")
 
                             elif play[0] == "Choose color":
                                 specials.showColors()
                                 color = input("Choose a color: ")
                                 specials.changeColor(play,specials.optionColor(color))
+                                input("Press any key to continue: ")
 
                             
                             elif play[0] == "Intermission":
                                 p = specials.affected(players,players[s])
                                 specials.Skip(p)
                                 print("{} has been skip".format(p.name))
-                                time.sleep(3)
+                                input("Press any key to continue: ")
 
                             elif play[0] == "+ 2":
                                 p = specials.affected(players,players[s])
@@ -159,7 +177,7 @@ while True:
                                 print("{} have used + 2 on you ".format(players[s].name))
                                 specials.Skip(p)
                                 print("{} has been skip".format(p.name))
-                                time.sleep(4)
+                                input("Press any key to continue: ")
 
                             
                             elif play[0] == "+ 4":
@@ -169,7 +187,7 @@ while True:
                                 p = specials.affected(players,players[s])
                                 validate = specials.noCard(card,players[s])
                                 specials.take4(players[s],p,validate,cardPack)
-                                time.sleep(4)
+                                input("Press any key to continue: ")
                                 
 
 
@@ -179,12 +197,13 @@ while True:
                         elif board.validateCard(play,card):
                             card = play
                             board.repCard(card)
+                            input("Press any key to continue: ")
                         
                         else:
                             players[s].hand.append(play)
                             print("You have been penalized for incorrect play")
                             cardPack.steal(players[s])
-                            time.sleep(2)
+                            input("Press any key to continue: ")
                         
                         break
 
@@ -201,7 +220,7 @@ while True:
             if len(players[s].hand) == 1 and players[s].state == "":
                 print("You have been penalized for not saying 'Uno' ")
                 cardPack.steal(players[s])
-                time.sleep(2)
+                input("Press any key to continue: ")
             
 
             if len(players[s].hand) == 0:
@@ -213,7 +232,7 @@ while True:
                 cardPack.handOut(players)
                 roundStarted = True
                 print("New round")
-                time.sleep(2)
+                input("Press any key to continue: ")
                 os.system("cls")
 
 

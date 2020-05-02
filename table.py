@@ -1,6 +1,5 @@
 from card_pack import  *
 from player import *
-import os,time,sys
 class Table():
     
     def repPlayers(self,players):
@@ -42,8 +41,7 @@ class Table():
         allRules = " ..................................................  \n - Incorrect play: steal a card. \n - Don't say 'Uno' before to play the penultimate card: steal a card. \n - Enter a number that exceeds the length of your hand: You don't play this turn. \n - you must only play +4 when you have no cards matching the card on the table: otherwise you will take six cards. \n  .................................................. "
         
         print("Rules\n",allRules)
-                    
-                    
+    
 
 
 
