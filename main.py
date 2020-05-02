@@ -5,6 +5,17 @@ print(" It is a game that is played from 2 to 10 players \n as each player recei
 
 print(' ________ ________ ________ ________ ________ ________ ________ ________ ________ \n """""""" """""""" """""""" """""""" """""""" """""""" """""""" """""""" """"""""')
 
+print("Menu \n Press '1' to see the credits \n Press '2' to how to play \n Press any key to play \n ")
+option = input("What do you will to do?: ")
+if option == "1":
+    print("Press '2' to how to play \n Press any key to play")
+    option = input("What do you will to do?: ")
+
+if option == "2":
+    pass
+
+
+
 from table import *
 
 
@@ -41,129 +52,146 @@ while True:
                 players[s].showHand()
                 players[s].showOptions()
                 desicion = input("What do you want to do?: ")
+                print("You must choose an option displayed on the screen")
 
             if desicion == "q":
-                try:
-                    option = int(input(" what card do you want to play? :  "))
-                    play = players[s].playCard(option)
-                    if play[0] in cardPack.cardsValue:
-                
-                        if play[0] == "Return":
-                            p = specials.affected(players,players[s])
-                            specials.returnCard(players,p)
+                while True:
+                    try:
+                        option = int(input(" what card do you want to play? :  "))
+                        while option < 0 or option >= len(players[s].hand):
+                            option = int(input(" what card do you want to play? :  "))
+                            print("You must good look your hand length")
 
-                        elif play[0] == "Choose color":
-                            specials.showColors()
-                            color = input("Choose a color: ")
-                            specials.changeColor(play,specials.optionColor(color))
 
-                        elif play[0] == "Intermission":
-                            p = specials.affected(players,players[s])
-                            specials.Skip(p)
-                            print("{} has been skip".format(p.name))
-                            time.sleep(3)
+                        play = players[s].playCard(option)
+                        if play[0] in cardPack.cardsValue:
+                    
+                            if play[0] == "Return":
+                                p = specials.affected(players,players[s])
+                                specials.returnCard(players,p)
 
-                        elif play[0] == "+ 2":
-                            p = specials.affected(players,players[s])
-                            specials.take2(p,cardPack)
-                            print("{} have used + 2 on you ".format(players[s].name))
-                            specials.Skip(p)
-                            print("{} has been skip".format(p.name))
-                            time.sleep(4)
+                            elif play[0] == "Choose color":
+                                specials.showColors()
+                                color = input("Choose a color: ")
+                                specials.changeColor(play,specials.optionColor(color))
 
-                        
-                        elif play[0] == "+ 4":
-                            specials.showColors()
-                            color = input("Choose a color: ")
-                            specials.changeColor(play,specials.optionColor(color))
-                            p = specials.affected(players,players[s])
-                            validate = specials.noCard(card,players[s])
-                            specials.take4(players[s],p,validate,cardPack)
-                            time.sleep(4)
-                            
+                            elif play[0] == "Intermission":
+                                p = specials.affected(players,players[s])
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+                                time.sleep(3)
 
+                            elif play[0] == "+ 2":
+                                p = specials.affected(players,players[s])
+                                specials.take2(p,cardPack)
+                                print("{} have used + 2 on you ".format(players[s].name))
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+                                time.sleep(4)
 
                             
+                            elif play[0] == "+ 4":
+                                specials.showColors()
+                                color = input("Choose a color: ")
+                                specials.changeColor(play,specials.optionColor(color))
+                                p = specials.affected(players,players[s])
+                                validate = specials.noCard(card,players[s])
+                                specials.take4(players[s],p,validate,cardPack)
+                                time.sleep(4)
+                                
 
-                        card = play
-                        board.repCard(card)
+
+                                
+
+                            card = play
+                            board.repCard(card)
+                            
+                        elif board.validateCard(play,card):
+                            card = play
+                            board.repCard(card)
                         
-                    elif board.validateCard(play,card):
-                        card = play
-                        board.repCard(card)
+                        else:
+                            players[s].hand.append(play)
+                            print("You have been penalized for incorrect play")
+                            cardPack.steal(players[s])
+                            time.sleep(2)
                     
-                    else:
-                        players[s].hand.append(play)
-                        print("You have been penalized for incorrect play")
-                        cardPack.steal(players[s])
-                        time.sleep(2)
+                        break
+                    except:
+                        print("you entered a letter")
                     
-                except:
-                    print("watch good the longitude your hand \n Penalized for not paying  attention to your hand")
-                    time.sleep(2)
+
 
             elif desicion == "r":
                 cardPack.steal(players[s])
                 time.sleep(2)
                 
             else:
-                try:
-                    players[s].Uno()
-                    option = int(input(" what card do you want to play? :  "))
-                    play = players[s].playCard(option)
-                    if play[0] in cardPack.cardsValue:
-                        if play[0] == "Return":
-                            p = specials.affected(players,players[s])
-                            specials.returnCard(players,p)
+                while True:
+                    try:
+                        players[s].Uno()
+                        option = int(input(" what card do you want to play? :  "))
+                        while option < 0 or option >= len(players[s].hand):
+                            option = int(input(" what card do you want to play? :  "))
+                            print("You must good look your hand length")
 
-                        elif play[0] == "Choose color":
-                            specials.showColors()
-                            color = input("Choose a color: ")
-                            specials.changeColor(play,specials.optionColor(color))
+                        play = players[s].playCard(option)
+                        if play[0] in cardPack.cardsValue:
+                            if play[0] == "Return":
+                                p = specials.affected(players,players[s])
+                                specials.returnCard(players,p)
 
-                        
-                        elif play[0] == "Intermission":
-                            p = specials.affected(players,players[s])
-                            specials.Skip(p)
-                            print("{} has been skip".format(p.name))
-                            time.sleep(3)
+                            elif play[0] == "Choose color":
+                                specials.showColors()
+                                color = input("Choose a color: ")
+                                specials.changeColor(play,specials.optionColor(color))
 
-                        elif play[0] == "+ 2":
-                            p = specials.affected(players,players[s])
-                            specials.take2(p,cardPack)
-                            print("{} have used + 2 on you ".format(players[s].name))
-                            specials.Skip(p)
-                            print("{} has been skip".format(p.name))
-                            time.sleep(4)
-
-                        
-                        elif play[0] == "+ 4":
-                            specials.showColors()
-                            color = input("Choose a color: ")
-                            specials.changeColor(play,specials.optionColor(color))
-                            p = specials.affected(players,players[s])
-                            validate = specials.noCard(card,players[s])
-                            specials.take4(players[s],p,validate,cardPack)
-                            time.sleep(4)
                             
+                            elif play[0] == "Intermission":
+                                p = specials.affected(players,players[s])
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+                                time.sleep(3)
+
+                            elif play[0] == "+ 2":
+                                p = specials.affected(players,players[s])
+                                specials.take2(p,cardPack)
+                                print("{} have used + 2 on you ".format(players[s].name))
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+                                time.sleep(4)
+
+                            
+                            elif play[0] == "+ 4":
+                                specials.showColors()
+                                color = input("Choose a color: ")
+                                specials.changeColor(play,specials.optionColor(color))
+                                p = specials.affected(players,players[s])
+                                validate = specials.noCard(card,players[s])
+                                specials.take4(players[s],p,validate,cardPack)
+                                time.sleep(4)
+                                
 
 
-                        card = play
-                        board.repCard(card)
+                            card = play
+                            board.repCard(card)
+                            
+                        elif board.validateCard(play,card):
+                            card = play
+                            board.repCard(card)
                         
-                    elif board.validateCard(play,card):
-                        card = play
-                        board.repCard(card)
-                    
-                    else:
-                        players[s].hand.append(play)
-                        print("You have been penalized for incorrect play")
-                        cardPack.steal(players[s])
-                        time.sleep(2)
-                    
-                except:
-                    print("watch good the longitude your hand \n Penalized for not paying  attention to your hand ")
-                    time.sleep(2)
+                        else:
+                            players[s].hand.append(play)
+                            print("You have been penalized for incorrect play")
+                            cardPack.steal(players[s])
+                            time.sleep(2)
+                        
+                        break
+
+                    except:
+                        print("You entered a letter")
+                
+
 
                 
 

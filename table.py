@@ -1,6 +1,6 @@
 from card_pack import  *
 from player import *
-import os,time
+import os,time,sys
 class Table():
     
     def repPlayers(self,players):

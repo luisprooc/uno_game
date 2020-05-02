@@ -61,23 +61,25 @@ class Player():
         
 
 
-try:
-    while True:
+while True:
+    try:
         totalPlayers = int(input("How many players will participate?: "))
-        if totalPlayers  < 2 or  totalPlayers > 10:
+        while  totalPlayers < 2 or  totalPlayers > 10:
+            print("The number of players must be between 2 to 10.")
             totalPlayers  = int(input("How many players will participate?: "))
 
-        else:
-            players = []
-            for a in range(totalPlayers):
-                name = input("Player's name : ").capitalize()
-                player = Player(name)
-                players.append(player)
-                
-            break
 
-except:
-    print("You entered a letter")
+        players = []
+        for a in range(totalPlayers):
+            name = input("Player's name : ").capitalize()
+            player = Player(name)
+            players.append(player)
+
+        break 
+
+    except:
+        print("You enter a letter")
+    
 
 
 
