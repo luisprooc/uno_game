@@ -148,7 +148,12 @@ while True:
 
 
             elif desicion == "r":
-                cardPack.steal(players[s])
+                if len(cardPack) != 0:
+                    cardPack.steal(players[s])
+
+                else:
+                    print("Deck empty")
+
                 input("Press any key to continue: ")
 
             
