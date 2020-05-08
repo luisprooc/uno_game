@@ -5,6 +5,7 @@ class Deck():
     def __init__(self):
         self.deck = []
         self.cardsValue = {"+ 2":20,"Return":20,"Intermission":20,"+ 4":50,"Choose color":50}
+        self.recycledCards = []
 
     def fillDeck(self,cards):
         for e in cards:

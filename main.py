@@ -126,11 +126,12 @@ while True:
 
 
                                 
-
+                            cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
                             
                         elif board.validateCard(play,card):
+                            cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
                             input("Press any key to continue: ")
@@ -148,11 +149,13 @@ while True:
 
 
             elif desicion == "r":
-                if len(cardPack) != 0:
+                if len(cardPack.deck) != 0:
                     cardPack.steal(players[s])
 
                 else:
-                    print("Deck empty")
+                    print("Deck empty\n Recycling deck ")
+                    cardPack.fillDeck(cardPack.recycledCards)
+                    cardPack.steal(players[s])
 
                 input("Press any key to continue: ")
 
@@ -210,11 +213,12 @@ while True:
                                 input("Press any key to continue: ")
                                 
 
-
+                            cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
                             
                         elif board.validateCard(play,card):
+                            cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
                             input("Press any key to continue: ")
@@ -251,6 +255,7 @@ while True:
                 players[s].addPoints(players,players[s],cardPack)
                 players[s].restartHand(players)
                 players[s].restartStates(players)
+                cardPack.deck.clear()
                 cardPack.fillDeck(cardList)
                 cardPack.handOut(players)
                 roundStarted = True
