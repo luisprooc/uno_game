@@ -86,32 +86,15 @@ while True:
 
 
                         play = players[s].playCard(option)
-                        if play[0] in cardPack.cardsValue:
-                    
-                            if play[0] == "Return":
-                                p = specials.affected(players,players[s])
-                                specials.returnCard(players,p)
-                                input("Press any key to continue: ")
+                        if play[0] == "+ 4" or play[0] == "Choose color":
+                
 
-                            elif play[0] == "Choose color":
+                            if play[0] == "Choose color":
                                 specials.showColors()
                                 color = input("Choose a color: ")
                                 specials.changeColor(play,specials.optionColor(color))
                                 input("Press any key to continue: ")
 
-                            elif play[0] == "Intermission":
-                                p = specials.affected(players,players[s])
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                input("Press any key to continue: ")
-
-                            elif play[0] == "+ 2":
-                                p = specials.affected(players,players[s])
-                                specials.take2(p,cardPack)
-                                print("{} have used + 2 on you ".format(players[s].name))
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                input("Press any key to continue: ")
 
                             
                             elif play[0] == "+ 4":
@@ -130,7 +113,24 @@ while True:
                             card = play
                             board.repCard(card)
                             
-                        elif board.validateCard(play,card):
+                        if board.validateCard(play,card):
+                            if play[0] == "Return":
+                                p = specials.affected(players,players[s])
+                                specials.returnCard(players,p)
+
+                            elif play[0] == "Intermission":
+                                p = specials.affected(players,players[s])
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+
+                            elif play[0] == "+ 2":
+                                p = specials.affected(players,players[s])
+                                specials.take2(p,cardPack)
+                                print("{} have used + 2 on you ".format(players[s].name))
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+        
+
                             cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
@@ -175,32 +175,15 @@ while True:
                             print("You must good look your hand length")
 
                         play = players[s].playCard(option)
-                        if play[0] in cardPack.cardsValue:
-                            if play[0] == "Return":
-                                p = specials.affected(players,players[s])
-                                specials.returnCard(players,p)
-                                input("Press any key to continue: ")
+                        if play[0] == "+ 4" or play[0] == "Choose color":
 
-                            elif play[0] == "Choose color":
+                            if play[0] == "Choose color":
                                 specials.showColors()
                                 color = input("Choose a color: ")
                                 specials.changeColor(play,specials.optionColor(color))
                                 input("Press any key to continue: ")
 
-                            
-                            elif play[0] == "Intermission":
-                                p = specials.affected(players,players[s])
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                input("Press any key to continue: ")
 
-                            elif play[0] == "+ 2":
-                                p = specials.affected(players,players[s])
-                                specials.take2(p,cardPack)
-                                print("{} have used + 2 on you ".format(players[s].name))
-                                specials.Skip(p)
-                                print("{} has been skip".format(p.name))
-                                input("Press any key to continue: ")
 
                             
                             elif play[0] == "+ 4":
@@ -213,11 +196,30 @@ while True:
                                 input("Press any key to continue: ")
                                 
 
+
+                                
                             cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
                             
-                        elif board.validateCard(play,card):
+                        if board.validateCard(play,card):
+                            if play[0] == "Return":
+                                p = specials.affected(players,players[s])
+                                specials.returnCard(players,p)
+
+                            elif play[0] == "Intermission":
+                                p = specials.affected(players,players[s])
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+
+                            elif play[0] == "+ 2":
+                                p = specials.affected(players,players[s])
+                                specials.take2(p,cardPack)
+                                print("{} have used + 2 on you ".format(players[s].name))
+                                specials.Skip(p)
+                                print("{} has been skip".format(p.name))
+        
+
                             cardPack.recycledCards.append(card)
                             card = play
                             board.repCard(card)
