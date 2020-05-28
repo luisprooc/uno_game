@@ -14,9 +14,6 @@ class Table():
     def validateCard(self,play,card):
         if card[0] == play[0] or card[1] == play[1]:
             return True
-        
-        elif play[0] == "+ 4" or play[0] == "Choose color":
-            return True
             
 
         else:

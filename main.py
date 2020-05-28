@@ -86,6 +86,7 @@ while True:
 
 
                         play = players[s].playCard(option)
+                        
                         if play[0] == "+ 4" or play[0] == "Choose color":
                 
 
@@ -113,7 +114,7 @@ while True:
                             card = play
                             board.repCard(card)
                             
-                        if board.validateCard(play,card):
+                        elif board.validateCard(play,card):
                             if play[0] == "Return":
                                 p = specials.affected(players,players[s])
                                 specials.returnCard(players,p)
@@ -175,6 +176,7 @@ while True:
                             print("You must good look your hand length")
 
                         play = players[s].playCard(option)
+
                         if play[0] == "+ 4" or play[0] == "Choose color":
 
                             if play[0] == "Choose color":
@@ -202,7 +204,7 @@ while True:
                             card = play
                             board.repCard(card)
                             
-                        if board.validateCard(play,card):
+                        elif board.validateCard(play,card):
                             if play[0] == "Return":
                                 p = specials.affected(players,players[s])
                                 specials.returnCard(players,p)
